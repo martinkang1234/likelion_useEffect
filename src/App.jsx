@@ -1,35 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+function NameInput() {
+  const [name, setName] = useState("");
+
+  const handleChange = (e) => {
+    setName(e.target.value); // 입력창의 값을 상태로 저장
+  };
+
+  // 스타일 변수 정의
+  const headingStyle = "text-2xl font-bold mb-4";
+  const inputStyle = "border border-gray-300 rounded px-3 py-2 w-50 mb-4";
+  const greetingStyle = "text-lg text-blue-600 font-medium";
+  const nameStyle = "text-orange-600";
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+    <div>
+      <h2 className={headingStyle}>이름을 입력하세요 ⬇️</h2>
+      <input type="text" onChange={handleChange} className={inputStyle} />
+      <p className={greetingStyle}>
+        안녕하세요, <span className={nameStyle}>{name}</span>님!
       </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default NameInput;
